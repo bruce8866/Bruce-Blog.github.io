@@ -21,7 +21,7 @@
     <link href="/2023/04/30/tensorflowGPU%E7%89%88%E5%BB%BA%E7%BD%AE-cuda11/"/>
     <url>/2023/04/30/tensorflowGPU%E7%89%88%E5%BB%BA%E7%BD%AE-cuda11/</url>
     
-    <content type="html"><![CDATA[<h2 id="如何跑TensorflowGPU版"><a href="#如何跑TensorflowGPU版" class="headerlink" title="如何跑TensorflowGPU版"></a>如何跑TensorflowGPU版</h2><p>老師給的environment是py3.6.9版有點太舊了，而且重點是沒法用GPU加速</p><p>首先自己用anaconda 2.1.4創建一個py&#x3D;3.7.16的環境<br>接著</p><p>conda install tensorflow-gpu&#x3D;2.5</p><p>pip install matplotlib</p><p>pip install jupyter notebook</p><p>同時再用anaconda安裝jupyter notebook及所有附屬套件</p><p>這時還沒結束，要打</p><p>pip uninstall nbconvert</p><p>pip install nbconvert</p><p>pip install –upgrade nbconvert</p><p>謝天謝地終於可以用GPU而不是CPU跑了</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="如何跑TensorflowGPU版"><a href="#如何跑TensorflowGPU版" class="headerlink" title="如何跑TensorflowGPU版"></a>如何跑TensorflowGPU版</h2><p>老師給的environment是py3.6.9版有點太舊了，而且重點是沒法用GPU加速</p><p>首先自己用anaconda 2.1.4創建一個py&#x3D;3.7.16的環境<br>接著</p><p>conda install tensorflow-gpu&#x3D;2.5</p><p>pip install matplotlib</p><p>pip install jupyter notebook</p><p>同時再用anaconda安裝jupyter notebook及所有附屬套件</p><p>這時還沒結束，如果跑出500：Internal Server Error，要打</p><p>pip uninstall nbconvert</p><p>pip install nbconvert</p><p>pip install –upgrade nbconvert</p><p>謝天謝地終於可以用GPU而不是CPU跑了</p><p>參考</p><p><a href="https://medium.com/py-tips-conceptes/%E5%AE%89%E8%A3%9Dtensorflow-gpu-2-4%E7%89%88%E6%9C%AC-9d9fe6ff172f">安裝tensorflow-gpu 2.4版本 - py-tips-conceptes - Medium</a></p><p><a href="https://zhuanlan.zhihu.com/p/573536499">如何解决jupyter notebook 出现大大的500：Internal Server Error - 知乎 (zhihu.com)</a></p>]]></content>
     
     
     
