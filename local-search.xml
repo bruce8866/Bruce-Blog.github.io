@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>jupytnote_book修改預設目錄</title>
+    <link href="/2023/04/30/jupytnote-book%E4%BF%AE%E6%94%B9%E9%A0%90%E8%A8%AD%E7%9B%AE%E9%8C%84/"/>
+    <url>/2023/04/30/jupytnote-book%E4%BF%AE%E6%94%B9%E9%A0%90%E8%A8%AD%E7%9B%AE%E9%8C%84/</url>
+    
+    <content type="html"><![CDATA[<p>jupyter notebook –generate-config</p><p>會產生一個config在C:\Users\user.jupyter\jupyter_notebook_config.py</p><p>jupyter_notebook_config.py後搜尋</p><p>#c.NotebookApp.notebook_dir &#x3D; u’’<br>變成<br>c.NotebookApp.notebook_dir &#x3D; u’’</p><p>然後在引號裡添加路徑例如</p><p>c.NotebookApp.notebook_dir &#x3D; u’D:&#x2F;&#x2F;Coding&#x2F;&#x2F;Jupyter_Notebook’</p><p>最後去jupytnote book路徑把”%USERPROFILE%&#x2F;“刪掉即可</p><p>參考資料</p><p><a href="https://jt25346798.medium.com/%E5%A6%82%E4%BD%95%E8%A8%AD%E5%AE%9Ajupyter-notebook%E7%9A%84%E8%B5%B7%E5%A7%8B%E8%B7%AF%E5%BE%91-8bf4d0468883">如何設定jupyter notebook的起始路徑 - 沒有如果，只有當下 - Medium</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>tensorflowGPU版建置_cuda11_</title>
+    <link href="/2023/04/30/tensorflowGPU%E7%89%88%E5%BB%BA%E7%BD%AE-cuda11/"/>
+    <url>/2023/04/30/tensorflowGPU%E7%89%88%E5%BB%BA%E7%BD%AE-cuda11/</url>
+    
+    <content type="html"><![CDATA[<h2 id="如何跑TensorflowGPU版"><a href="#如何跑TensorflowGPU版" class="headerlink" title="如何跑TensorflowGPU版"></a>如何跑TensorflowGPU版</h2><p>老師給的environment是py3.6.9版有點太舊了，而且重點是沒法用GPU加速</p><p>首先自己用anaconda 2.1.4創建一個py&#x3D;3.7.16的環境<br>接著</p><p>conda install tensorflow-gpu&#x3D;2.5</p><p>pip install matplotlib</p><p>pip install jupyter notebook</p><p>同時再用anaconda安裝jupyter notebook及所有附屬套件</p><p>這時還沒結束，要打</p><p>pip uninstall nbconvert</p><p>pip install nbconvert</p><p>pip install –upgrade nbconvert</p><p>謝天謝地終於可以用GPU而不是CPU跑了</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>blog建置_二_：</title>
     <link href="/2023/04/29/blog%E5%BB%BA%E7%BD%AE-%E4%BA%8C-%EF%BC%9A/"/>
     <url>/2023/04/29/blog%E5%BB%BA%E7%BD%AE-%E4%BA%8C-%EF%BC%9A/</url>
