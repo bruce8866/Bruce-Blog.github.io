@@ -16,13 +16,15 @@
   <meta name="author" content="欒">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="目前最高50%且無法複製 多數逼近50約莫45 123456789101112131415161718192021222324252627282930313233343536import tensorflow as tffrom tensorflow.keras import layers,modelsimport matplotlib.pyplot as plt#載入cifar10cifar10">
+<meta property="og:type" content="article">
 <meta property="og:title" content="神經網路學習(二)：嘗試只利用NN訓練CIFAR10來達到90%以上acc">
 <meta property="og:url" content="http://example.com/2023/04/29/%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E5%AD%B8%E7%BF%92-%E4%BA%8C-%EF%BC%9A/">
 <meta property="og:site_name" content="Bruce的個人部落格">
+<meta property="og:description" content="目前最高50%且無法複製 多數逼近50約莫45 123456789101112131415161718192021222324252627282930313233343536import tensorflow as tffrom tensorflow.keras import layers,modelsimport matplotlib.pyplot as plt#載入cifar10cifar10">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-04-29T03:47:03.000Z">
-<meta property="article:modified_time" content="2023-04-29T03:50:24.212Z">
+<meta property="article:modified_time" content="2023-05-01T14:16:05.866Z">
 <meta property="article:author" content="欒">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -217,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.3k 字
         
       </span>
     
@@ -228,7 +230,7 @@
         
         
         
-          1 分鐘
+          12 分鐘
         
       </span>
     
@@ -271,7 +273,12 @@
             
               <div class="markdown-body">
                 
-                
+                <p>目前最高50%且無法複製</p>
+<p>多數逼近50約莫45</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import tensorflow as tf<br><span class="hljs-keyword">from</span> tensorflow.keras import layers,models<br>import matplotlib.pyplot as plt<br><br><span class="hljs-comment">#載入cifar10</span><br>cifar10 = tf.keras.datasets.cifar10<br>(train_images,train_labels),(test_images,test_labels) = cifar10.load_data()<br><br><span class="hljs-comment">#數據預處理</span><br>train_images = train_images.astype(<span class="hljs-string">&#x27;float32&#x27;</span>)/255<br>test_images = test_images.astype(<span class="hljs-string">&#x27;float32&#x27;</span>)/255<br><br><span class="hljs-comment">#NN</span><br>train_images_nn = train_images.reshape((50000,32<span class="hljs-number">*32</span><span class="hljs-number">*3</span>))<br>test_images_nn = test_images.reshape((10000,32<span class="hljs-number">*32</span><span class="hljs-number">*3</span>))<br><br>model_nn = models.Sequential([<br>  layers.Dense(4096,<span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>,input_shape=(32*32*3,)),<br>  #layers.Flatten(),<br>    #<span class="hljs-string">&#x27;leaky_relu&#x27;</span><br>  layers.Dense(2048,<span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>),<br>  layers.Dense(1024,<span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>),<br>  layers.Dense(512,<span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>),<br>  layers.Dense(256,<span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>),<br>  layers.Dense(128,<span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>),<br>  layers.Dense(64,<span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>),<br>  layers.Dense(10,<span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;softmax&#x27;</span>),<br>])<br><br>model_nn.compile(<br>    <span class="hljs-attribute">optimizer</span>=<span class="hljs-string">&#x27;adam&#x27;</span>,<br>    <span class="hljs-attribute">loss</span>=<span class="hljs-string">&#x27;sparse_categorical_crossentropy&#x27;</span>,<br>    metrics=[<span class="hljs-string">&#x27;accuracy&#x27;</span>]<br>)<br><br>history_nn = model_nn.fit(train_images_nn,train_labels,<span class="hljs-attribute">epochs</span>=15,validation_data=(test_images_nn,test_labels))<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Epoch</span> <span class="hljs-number">15</span>/<span class="hljs-number">15</span><br><span class="hljs-attribute">1563</span>/<span class="hljs-number">1563</span><span class="hljs-meta"> [==============================] - 11s 7ms/step - loss: 1.3659 - accuracy: 0.5124 - val_loss: 1.4874 - val_accuracy: 0.4744</span><br></code></pre></td></tr></table></figure>
+
                 
               </div>
             

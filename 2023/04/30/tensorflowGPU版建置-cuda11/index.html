@@ -16,15 +16,15 @@
   <meta name="author" content="欒">
   <meta name="keywords" content="">
   
-    <meta name="description" content="如何跑TensorflowGPU版老師給的environment page是py 3.6.9版有點太舊了，而且重點是沒GPU加速 如何創建一個GPU的NN環境 首先在anaconda 2.1.4創建一個py&#x3D;3.7.16的環境 接著跑以下三個指令 conda install tensorflow-gpu&#x3D;2.5 pip install matplotlib pip instal">
+    <meta name="description" content="如何跑TensorflowGPU版老師給的environment page是py 3.6.9版有點太舊了，而且重點是沒GPU加速 如何創建一個GPU的NN環境 首先在anaconda 2.1.4創建一個py&#x3D;3.7.16的環境 記得裝conda powershell方便打指令 接著跑以下三個指令 conda install tensorflow-gpu&#x3D;2.5 pip inst">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflowGPU版建置_cuda11_">
 <meta property="og:url" content="http://example.com/2023/04/30/tensorflowGPU%E7%89%88%E5%BB%BA%E7%BD%AE-cuda11/">
 <meta property="og:site_name" content="Bruce的個人部落格">
-<meta property="og:description" content="如何跑TensorflowGPU版老師給的environment page是py 3.6.9版有點太舊了，而且重點是沒GPU加速 如何創建一個GPU的NN環境 首先在anaconda 2.1.4創建一個py&#x3D;3.7.16的環境 接著跑以下三個指令 conda install tensorflow-gpu&#x3D;2.5 pip install matplotlib pip instal">
+<meta property="og:description" content="如何跑TensorflowGPU版老師給的environment page是py 3.6.9版有點太舊了，而且重點是沒GPU加速 如何創建一個GPU的NN環境 首先在anaconda 2.1.4創建一個py&#x3D;3.7.16的環境 記得裝conda powershell方便打指令 接著跑以下三個指令 conda install tensorflow-gpu&#x3D;2.5 pip inst">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-04-30T12:56:29.000Z">
-<meta property="article:modified_time" content="2023-04-30T15:36:17.593Z">
+<meta property="article:modified_time" content="2023-05-05T02:52:09.334Z">
 <meta property="article:author" content="欒">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          485 字
+          534 字
         
       </span>
     
@@ -276,6 +276,7 @@
                 <h2 id="如何跑TensorflowGPU版"><a href="#如何跑TensorflowGPU版" class="headerlink" title="如何跑TensorflowGPU版"></a>如何跑TensorflowGPU版</h2><p>老師給的environment page是py 3.6.9版有點太舊了，而且重點是沒GPU加速</p>
 <p>如何創建一個GPU的NN環境</p>
 <p>首先在anaconda 2.1.4創建一個py&#x3D;3.7.16的環境</p>
+<p>記得裝conda powershell方便打指令</p>
 <p>接著跑以下三個指令</p>
 <p>conda install tensorflow-gpu&#x3D;2.5</p>
 <p>pip install matplotlib</p>
@@ -284,7 +285,7 @@
 <p>這時還沒結束，如果跑出500：Internal Server Error，要打</p>
 <p>pip uninstall nbconvert</p>
 <p>pip install nbconvert</p>
-<p>pip install –upgrade nbconvert</p>
+<p>pip install –upgrade nbconvert<br>(conda upgrade nbconvert也可以)</p>
 <p>謝天謝地終於可以用GPU而不是CPU跑了</p>
 <p>參考</p>
 <p><a target="_blank" rel="noopener" href="https://medium.com/py-tips-conceptes/%E5%AE%89%E8%A3%9Dtensorflow-gpu-2-4%E7%89%88%E6%9C%AC-9d9fe6ff172f">安裝tensorflow-gpu 2.4版本 - py-tips-conceptes - Medium</a></p>
