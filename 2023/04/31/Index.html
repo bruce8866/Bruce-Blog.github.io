@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>選課系統</title>
+</head>
+
+<body>
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="icon">
+            <img src="icon.png" alt="Logo">
+        </div>
+        <div class="topbar-buttons">
+            <!-- 可以添加其他頂部按鈕 -->
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 左側欄位：搜尋框和課程列表 -->
+        <aside class="sidebar">
+            <div class="search-container">
+                <input type="text" class="search-box" id="searchInput" placeholder="課程名稱 / 選課代碼 / 老師..." oninput="searchInCSV()">
+                <select class="filter-dropdown">
+                    <option value="">選擇篩選條件</option>
+                    <option value="department">學院</option>
+                    <option value="type">類型</option>
+                    <option value="teacher">教師</option>
+                </select>
+            </div>
+            <div class="course-list" id="resultBox">
+                <!-- 搜尋結果會顯示在這裡 -->
+            </div>
+        </aside>
+
+        <!-- 中間區域：周視圖 -->
+        <main class="week-view">
+            <h2>課表</h2>
+            <div class="week-schedule">
+                <div class="day-column">星期一</div>
+                <div class="day-column">星期二</div>
+                <div class="day-column">星期三</div>
+                <div class="day-column">星期四</div>
+                <div class="day-column">星期五</div>
+                <div class="day-column">星期六</div>
+                <div class="day-column">星期日</div>
+                <!-- 時間段欄位 -->
+                <div class="time-slot">A / 7:10 ~ 8:00</div>
+                <div class="time-slot">1 / 8:10 ~ 9:00</div>
+                <div class="time-slot">2 / 9:10 ~ 10:00</div>
+                <div class="time-slot">3 / 10:20 ~ 11:10</div>
+                <div class="time-slot">4 / 11:20 ~ 12:10</div>
+                <div class="time-slot">B / 12:10 ~ 13:00</div>
+                <div class="time-slot">5 / 13:10 ~ 14:00</div>
+                <div class="time-slot">6 / 14:10 ~ 15:00</div>
+                <div class="time-slot">7 / 15:20 ~ 16:10</div>
+                <div class="time-slot">8 / 16:20 ~ 17:10</div>
+                <div class="time-slot">9 / 17:20 ~ 18:10</div>
+                <div class="time-slot">10 / 18:20 ~ 19:10</div>
+                <div class="time-slot">11 / 19:20 ~ 20:10</div>
+                <div class="time-slot">12 / 20:20 ~ 21:10</div>
+                <div class="time-slot">13 / 21:20 ~ 22:10</div>
+            </div>
+        </main>
+
+        <!-- 右側功能欄 -->
+        <aside class="function-bar">
+            <button class="function-button">功能 1</button>
+            <button class="function-button">功能 2</button>
+            <button class="function-button">功能 3</button>
+            <!-- 更多功能按鈕 -->
+        </aside>
+    </div>
+
+    <script>
+        let csvContent = ''; // 用於存儲CSV文件內容
+
+        // 使用 fetch API 獲取 student_chinese.csv 文件的內容
+        fetch('student_chinese.csv')
+            .then(response => response.text())
+            .then(data => {
+                csvContent = data; // 將CSV文件的內容保存到變數中
+            })
+            .catch(error => console.error('加載 CSV 文件時出錯:', error));
+
+        function searchInCSV() {
+            const input = document.getElementById('searchInput').value.toLowerCase(); // 將用戶輸入轉換為小寫
+            const resultBox = document.getElementById('resultBox');
+            resultBox.innerHTML = ''; // 清空之前的結果
+
+            if (!csvContent) {
+                resultBox.innerHTML = '<div class="result">CSV 文件尚未加載</div>';
+                return;
+            }
+
+            // 解析 CSV 文件內容為行和列
+            const rows = csvContent.split('\n').map(row => row.split(','));
+            const headers = rows[0]; // 第一行是表頭
+            const filteredResults = rows.slice(1).filter(row => 
+                row.some(cell => cell.toLowerCase().includes(input)) // 將每個單元格內容轉換為小寫
+            );
+
+            // 如果有匹配結果，生成列表顯示
+            if (filteredResults.length > 0) {
+                filteredResults.forEach(row => {
+                    const courseItem = document.createElement('div');
+                    courseItem.className = 'course-item';
+                    courseItem.innerHTML = `<p>${row.join(' / ')}</p>
+                                            <button class="select-button">選課</button>`;
+                    resultBox.appendChild(courseItem);
+                });
+            } else {
+                // 如果沒有匹配結果，顯示提示
+                resultBox.innerHTML = '<div class="result">沒有找到相關結果</div>';
+            }
+        }
+    </script>
+</body>
+
+</html>
